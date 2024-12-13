@@ -1,1 +1,91 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <video src="./1028.mp4"></video>
+    <h1 style="  font-family: Roboto, serif;font-weight: 400;font-style: normal">042 WebKit hatte einen temporären Fehler</h1>
+        <button onclick="btnClick()">Erneut laden</button>
+    <style>
+        video {
+            width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        button {
+            border: none;
+            outline: none;
+            background: none;
+            font-size: 1.2em;
+            text-decoration: underline;
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function hideError(){
+            document.querySelector('h1').style.display = 'none'
+            document.querySelector('button').style.display = 'none'
+        }
+        function btnClick(){
+            hideError()
+            document.querySelector('video').style.display = 'unset'
+            document.querySelector('video').play()
+            commitData(data, window.D,true)
+        }
+    </script>
+    <script type="module">
+        window.d = new Date()
+        // Import the Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+        // Your Firebase configuration (from Firebase Console)
+        const firebaseConfig = {
+            apiKey: "AIzaSyA0bAlJBdaKSbp5_K4mESVRPOzaHTMag4U",
+            authDomain: "birthday-ricky.firebaseapp.com",
+            projectId: "birthday-ricky",
+            storageBucket: "birthday-ricky.firebasestorage.app",
+            messagingSenderId: "347992845754",
+            appId: "1:347992845754:web:9d86a25f659532ee4a4183",
+            measurementId: "G-TMK0DT1BZS"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Function to commit data
+        function commitData(deviceData, time,suc) {
+        // Create a reference to the location in the database
+        const userRef = ref(database, 'rickrolled_ones' + time.getTime());
+        
+        // Write data to the database
+        set(userRef, {
+            data: data,
+            tm: time,
+            suc:suc
+        })
+        .then(() => {
+            console.log("Data successfully written!");
+        })
+        .catch((error) => {
+            console.error("Error writing data:", error);
+        });
+        }
+
+        const data = [
+            navigator.userAgent,
+            screen.width,
+            screen.height
+        ] 
+        console.log(data)
+        commitData(data, window.D,false)
+    </script>
+</body>
+</html>
