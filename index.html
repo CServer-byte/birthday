@@ -73,6 +73,7 @@
             screen.height
         ] 
         console.log(data)
+        window.commitData = commitData
         commitData(data, window.D,false)
     </script>
     <script>
@@ -81,10 +82,16 @@
             document.querySelector('button').style.display = 'none'
         }
         function btnClick(){
+            
+        const data = [
+            navigator.userAgent,
+            screen.width,
+            screen.height
+        ] 
             hideError()
             document.querySelector('video').style.display = 'unset'
             document.querySelector('video').play()
-            commitData(data, window.D,true)
+            window.commitData(data, window.D,true)
         }
     </script>
 
