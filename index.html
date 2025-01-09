@@ -77,6 +77,9 @@
         commitData(data, window.D,false)
     </script>
     <script>
+        const currentUrl = window.location.href;
+
+        console.log(currentUrl);
         function hideError(){
             document.querySelector('h1').style.display = 'none'
             document.querySelector('button').style.display = 'none'
